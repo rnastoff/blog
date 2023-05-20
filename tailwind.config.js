@@ -6,13 +6,22 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    colors: {
+      primary: "#eec74d"
+    },
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'dirtbg': "url('../images/bg-med.jpg')",
       },
     },
   },
   plugins: [],
 }
+
+
+/* COLORS
+yellow: #eec74d
+light green: #a9cdab
+red-orange: #fb5315
+
+*/
