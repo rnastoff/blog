@@ -1,11 +1,19 @@
-const Comment = () => {
+import moment from 'moment';
+
+interface Comment {
+  comment: string;
+  createdAt: string;
+  name: string;
+}
+
+const Comment = (comment: Comment) => {
   return (
     <div className="border-2 border-primary p-3 mt-3 mb-3">
       <p>
-        <span className="font-bold">JimJohn</span> on Apr 11, 2023
+        <span className="font-bold">{comment.name.toUpperCase()}</span> - {moment(comment.createdAt).format("MMMM DD, YYYY").toUpperCase()}
       </p>
-      <p className="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Vestibulum convallis nec lectus non sollicitudin. Etiam malesuada tincidunt neque a cursus.
+      <p className="mt-2">
+        {comment.comment}
       </p>
     </div>
   )

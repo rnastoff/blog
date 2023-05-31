@@ -1,29 +1,9 @@
 import PostPreview from '../components/PostPreview';
 import { getPreviewPosts } from '../services';
 
-interface Category {
-  name: string;
-  slug: string;
-}
-
-interface PostPrev {
-  node: {
-    createdAt: string;
-    slug: string;
-    title: string;
-    excerpt: string;
-    categories: Category[]
-  }
-}
-
-interface PostPreviews {
-  posts: PostPrev[]
-}
-
+import { PostPreviews } from "../interfaces/postPreview";
 
 export default function Home({ posts }: PostPreviews) {
-  // console.log(JSON.stringify(posts))
-  // console.log(posts[0].node.createdAt);
 
   const postPreviews = posts.map((post) => {
     return (

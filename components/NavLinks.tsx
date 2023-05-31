@@ -17,7 +17,7 @@ const NavLinks = () => {
 
   const categoriesHTML = categories.map((category) => (
     <li className="self-center cursor-pointer list-none text-white hover:text-primary" key={category.slug}>
-      <Link key={category.slug} href={`/category/${category.slug}`}>{category.name}</Link>
+      <Link className="text-white" key={category.slug} href={`/category/${category.slug}`}>{category.name}</Link>
     </li>
   ))
 
@@ -25,7 +25,7 @@ const NavLinks = () => {
     <>
       <nav className="border-[3px] border-primary w-full lg:flex md:flex sm:hidden hidden ">
         <Image src={rn} width={65} height={65} alt="RN Logo" className="border-r-[3px] p-2 border-primary cursor-pointer" />
-        <ul className="flex w-full justify-between py-2 lg:px-5 px-2">
+        <ul className="flex w-full justify-between py-2 lg:px-5 px-2 text-white">
           {categoriesHTML}
         </ul>
       </nav>

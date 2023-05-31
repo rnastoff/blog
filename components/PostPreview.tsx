@@ -15,8 +15,9 @@ interface PostPreview {
 }
 
 const PostPreview = (post: PostPreview) => {
+
   const categories = post.categories.map((category, i, arr) => {
-    let comma = arr.length - 1 === i ? "" : ", ";
+    const comma = arr.length - 1 === i ? "" : ", ";
     return (
       <span key={category.slug}>
         <Link
