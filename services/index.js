@@ -3,8 +3,8 @@ const graphqlAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT;
 
 export const getPreviewPosts = async () => {
   const query = gql`
-    query GetPreviewPosts {
-      postsConnection {
+    query GetPreviewPosts  {
+      postsConnection (first: 100) {
         edges {
           node {
             createdAt
