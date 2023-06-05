@@ -1,6 +1,8 @@
+import Header from '../../components/Header';
 import PostContent from '../../components/PostContent';
 import CommentForm from '../../components/CommentForm';
 import CommentGroup from '../../components/CommentGroup';
+
 
 import { PostSlug } from "../../interfaces/postSlug";
 
@@ -8,12 +10,15 @@ import { getPost, getPreviewPosts } from "../../services/index";
 
 const Post = ({ post }: { post: PostSlug }) => {
   return (
-    <div className="lg:mt-8 mt-4 lg:w-[32rem] md:w-[32rem] w-[20rem]">
-      <PostContent post={post} />
-      <hr className="mt-10 border-primary" />
-      <CommentForm slug={post.slug} />
-      <hr className="md:mt-12 mt-8 border-primary" />
-      <CommentGroup slug={post.slug} />
+    <div className="flex flex-col justify-center items-center">
+      <Header />
+      <div className="lg:mt-8 mt-4 lg:w-[35rem] md:w-[32rem] w-[20rem]">
+        <PostContent post={post} />
+        <hr className="mt-6 border-primary" />
+        <CommentForm slug={post.slug} />
+        <hr className="md:mt-6 mt-6 border-primary" />
+        <CommentGroup slug={post.slug} />
+      </div>
     </div>
   )
 }

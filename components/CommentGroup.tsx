@@ -36,7 +36,7 @@ const CommentGroup = ({ slug }: { slug: string }) => {
 
 
   return (
-    <div className="flex flex-col justify-center px-5 mb-10 md:mt-12 mt-8">
+    <div className="flex flex-col justify-center px-5 mb-10 md:mt-6 mt-4">
 
       <h2 className="text-center lg:text-3xl text-2xl font-bold text-primary">
         {comments.length === 1 && `There is ${comments.length} comment`}

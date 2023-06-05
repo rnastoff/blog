@@ -43,7 +43,7 @@ const CommentForm = ({ slug }: { slug: string }) => {
 
 
   return (
-    <form className="py-4 px-5 md:mt-8 mt-4">
+    <form className="py-4 px-5 md:mt-4 mt-4">
       <h3 className="text-primary text-center md:text-3xl text-2xl font-bold">LEAVE A COMMENT</h3>
       <textarea
         className="w-full h-24 focus:outline-0 text-black p-2 mt-2"

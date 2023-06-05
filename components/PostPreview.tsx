@@ -33,29 +33,26 @@ const PostPreview = (post: PostPreview) => {
   const postSlug = `/post/${post.slug}`;
 
   return (
-    <div className="w-full md:mb-16 mb-8">
-      <h2 className="text-center text-primary font-extrabold md:text-3xl text-xl">
+    <div className="md:mb-14 mb-7">
+      <h2 className="lg:text-4xl md:text-3xl text-[1.4rem] leading-6 text-primary font-black md:mb-0 mb-1 hover:text-[#fff]">
         <Link href={postSlug}>
           {post.title.toUpperCase()}
         </Link>
       </h2>
 
-      <h3 className="text-center -mt-[2px]">{moment(post.date).format("MMMM DD, YYYY").toUpperCase()}</h3>
+      <div className="border-b-[1px] border-primary"></div>
 
-      <div className="border-2 border-primary px-3 py-2">
-        <p>{post.excerpt}</p>
-        <Link
-          href={postSlug}
-          className="text-white text-center w-full block font-bold mt-2 text-white hover:text-primary"
-        >
-          READ MORE
-        </Link>
+      <div className="mt-1">
+        <p className="md:inline-block block">
+          {moment(post.date).format("MMMM DD, YYYY").toUpperCase()}
+        </p>
+        <span className="md:px-8 md:inline-block hidden">|</span>
+        <span>
+          <span className="font-semibold">TAGS: </span>
+          {categories}
+        </span>
       </div>
 
-      <p className="text-sm text-center mt-1">
-        <span className="font-semibold">TAGS: </span>
-        {categories}
-      </p>
     </div>
   )
 }

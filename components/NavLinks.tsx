@@ -23,14 +23,31 @@ const NavLinks = () => {
 
   return (
     <>
-      <nav className="border-[3px] border-primary w-full lg:flex md:flex sm:hidden hidden ">
-        <Image src={rn} width={65} height={65} alt="RN Logo" className="border-r-[3px] p-2 border-primary cursor-pointer" />
+      <nav className="lg:w-[1000px] md:w-[670px] lg:flex md:flex sm:hidden hidden">
+        <Image
+          src={rn}
+          width={50}
+          height={50}
+          alt="RN Logo"
+          className="cursor-pointer lg:mr-5 mr-0"
+        />
         <ul className="flex w-full justify-between py-2 lg:px-5 px-2 text-white">
           {categoriesHTML}
         </ul>
       </nav>
-      <hr className="border-2 w-full border-primary md:hidden block " />
+      {/* <hr className="w-full md:hidden block " /> */}
     </>
+
+
+    // <>
+    //   <nav className="border-[3px] border-primary w-full lg:flex md:flex sm:hidden hidden ">
+    //     <Image src={rn} width={65} height={65} alt="RN Logo" className="border-r-[3px] p-2 border-primary cursor-pointer" />
+    //     <ul className="flex w-full justify-between py-2 lg:px-5 px-2 text-white">
+    //       {categoriesHTML}
+    //     </ul>
+    //   </nav>
+    //   <hr className="border-2 w-full border-primary md:hidden block " />
+    // </>
   )
 }
 

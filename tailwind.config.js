@@ -7,7 +7,13 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: "#eec74d"
+      primary: "#eec74d",
+      secondary: "#1a1a1a"
+    },
+    screens: {
+      'sm': '620px',
+      'md': '730px',
+      'lg': '1120px'
     },
     extend: {
       backgroundImage: {

@@ -1,5 +1,3 @@
-
-
 interface PaginationProps {
   pageNumber: number;
   onChange(page: number): void;
