@@ -37,11 +37,6 @@ export default function Home({ posts }: PostPreviews) {
   });
 
 
-  // useEffect(() => {
-  //   console.log("postPreviews:", postPreviews);
-  // })
-
-
   return (
     <div className="flex flex-col justify-center items-center">
       <Header />
@@ -67,5 +62,4 @@ export async function getStaticProps() {
   return {
     props: { posts }
   }
-
 }

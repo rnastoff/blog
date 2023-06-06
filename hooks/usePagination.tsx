@@ -36,10 +36,6 @@ const usePagination = (allPosts: PostPrev[], query: string) => {
   }
 
   const hasNextButton = () => {
-    console.log("page number: ", pageNumber)
-    console.log("firstIndexCurrentPage: ", firstIndexCurrentPage)
-    console.log("lastIndexCurrentPage: ", lastIndexCurrentPage);
-    console.log("allPosts.length: ", allPosts.length)
     return !(lastIndexCurrentPage === allPosts.length);
   }
 
