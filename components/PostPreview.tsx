@@ -1,20 +1,8 @@
 import Link from 'next/link'
 import moment from 'moment';
+import { PostPrev } from '../interfaces/postPreview';
 
-interface Category {
-  name: string;
-  slug: string;
-}
-
-interface PostPreview {
-  categories: Category[];
-  date: string;
-  excerpt: string;
-  slug: string;
-  title: string;
-}
-
-const PostPreview = (post: PostPreview) => {
+const PostPreview = (post: PostPrev) => {
 
   const categories = post.categories.map((category, i, arr) => {
     const comma = arr.length - 1 === i ? "" : ", ";
@@ -44,7 +32,7 @@ const PostPreview = (post: PostPreview) => {
 
       <div className="mt-1">
         <p className="md:inline-block block">
-          {moment(post.date).format("MMMM DD, YYYY").toUpperCase()}
+          {moment(post.createdAt).format("MMMM DD, YYYY").toUpperCase()}
         </p>
         <span className="md:px-8 md:inline-block hidden">|</span>
         <span>

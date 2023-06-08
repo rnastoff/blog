@@ -1,4 +1,3 @@
-import Header from '../../components/Header';
 import PostContent from '../../components/PostContent';
 import CommentForm from '../../components/CommentForm';
 import CommentGroup from '../../components/CommentGroup';
@@ -11,7 +10,6 @@ import { getPost, getPreviewPosts } from "../../services/index";
 const Post = ({ post }: { post: PostSlug }) => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <Header />
       <div className="lg:mt-8 mt-4 lg:w-[35rem] md:w-[32rem] w-[20rem]">
         <PostContent post={post} />
         <hr className="mt-6 border-primary" />

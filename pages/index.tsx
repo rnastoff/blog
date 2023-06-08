@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-import Header from '../components/Header';
 import PostPreview from '../components/PostPreview';
 import Pagination from '../components/Pagination';
 
@@ -12,22 +11,20 @@ import usePagination from '../hooks/usePagination';
 import dummyData from '../dummy/dummyData';
 
 export default function Home({ posts }: PostPreviews) {
-
-  const query = "";
+  const router = useRouter();
+  const slug = "";
+  const pageNum = typeof router.query.page === 'string' ? parseInt(router.query.page) : 1;
 
   const {
-    pageNumber,
-    handlePageChange,
     hasNextButton,
     hasPreviousButton,
-    currentPagePosts } = usePagination(posts, query);
-
+    currentPagePosts } = usePagination(posts, slug, pageNum);
 
   const postPreviews = currentPagePosts.map((post) => {
     return (
       <PostPreview
         categories={post.categories}
-        date={post.createdAt}
+        createdAt={post.createdAt}
         excerpt={post.excerpt}
         slug={post.slug}
         title={post.title}
@@ -39,12 +36,9 @@ export default function Home({ posts }: PostPreviews) {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <Header />
       <div className="postPreviews lg:w-[35rem] md:w-[32rem] w-[20rem] md:mt-8 mt-4 mb-32">
         {postPreviews}
         <Pagination
-          pageNumber={pageNumber}
-          onChange={handlePageChange}
           hasNextButton={hasNextButton()}
           hasPreviousButton={hasPreviousButton()}
         />

@@ -5,8 +5,6 @@ import { getComments } from '../services';
 
 import Comment from './Comment';
 
-//2:50:47
-
 interface Com {
   comment: string;
   createdAt: string;

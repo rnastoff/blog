@@ -4,14 +4,11 @@ import { submitComment } from '../services';
 
 const CommentForm = ({ slug }: { slug: string }) => {
   const [error, setError] = useState(false);
-  const [local, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const commentEl = useRef<HTMLTextAreaElement>(null);
   const nameEl = useRef<HTMLInputElement>(null);
   const emailEl = useRef<HTMLInputElement>(null);
-  const storeDataEl = useRef();
 
-  // (2:10:18)
 
   const handleCommentSubmission = (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import Header from '../../components/Header';
+import { useRouter } from 'next/router';
 import PostPreview from '../../components/PostPreview';
 import Pagination from '../../components/Pagination';
 
@@ -8,21 +8,21 @@ import { PostPreviews, PostPrev, Category } from "../../interfaces/postPreview";
 import usePagination from '../../hooks/usePagination';
 
 const Category = ({ posts }: PostPreviews) => {
-  let categoryPosts = posts.reverse();
-  const query = "category";
+  const router = useRouter();
+  console.log("ROUTER INSIDE CATEGORY SLUG", router);
+  const slug = router.query.slug;
+  const pageNum = typeof router.query.page === 'string' ? parseInt(router.query.page) : 1;
 
   const {
-    pageNumber,
-    handlePageChange,
     hasNextButton,
     hasPreviousButton,
-    currentPagePosts } = usePagination(categoryPosts, query);
+    currentPagePosts } = usePagination(posts, slug, pageNum);
 
-  const categoryPostPreviews = posts.map((post) => {
+  const categoryPostPreviews = currentPagePosts.map((post) => {
     return (
       <PostPreview
         categories={post.categories}
-        date={post.createdAt}
+        createdAt={post.createdAt}
         excerpt={post.excerpt}
         slug={post.slug}
         title={post.title}
@@ -33,12 +33,9 @@ const Category = ({ posts }: PostPreviews) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <Header />
       <div className="postPreviews md:mt-8 mt-4 lg:w-[32rem] md:w-[32rem] w-[20rem]">
         {categoryPostPreviews}
         <Pagination
-          pageNumber={pageNumber}
-          onChange={handlePageChange}
           hasNextButton={hasNextButton()}
           hasPreviousButton={hasPreviousButton()}
         />
@@ -49,8 +46,12 @@ const Category = ({ posts }: PostPreviews) => {
 
 export default Category;
 
+
+
+
 export async function getStaticProps({ params }: { params: { "slug": string } }) {
   let data = await getCategoryPosts(params.slug);
+  data = data.reverse();
   return {
     props: { posts: data }
   }

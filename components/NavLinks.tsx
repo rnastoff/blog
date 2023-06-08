@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import rn from '../images/rn.svg';
 
 const categories = [
@@ -13,13 +15,46 @@ const categories = [
   { name: "WEIRD", slug: "weird" },
 ];
 
+interface Props {
+  handlePageChange: (page: number) => void
+}
+
+//{ handlePageChange }: Props
+
 const NavLinks = () => {
+
+  const router = useRouter();
+  console.log(router);
+
+  // const categoryClick = (e: React.MouseEvent<HTMLElement>) => {
+  //   e.preventDefault();
+
+  //   let page = 1;
+  //   if (router.query.page) {
+  //     if (!Array.isArray(router.query.page)) {
+  //       page = parseInt(router.query.page);
+  //     }
+  //   }
+  //   // handlePageChange(page);
+  // }
+
+  // onClick={categoryClick}
 
   const categoriesHTML = categories.map((category) => (
     <li className="self-center cursor-pointer list-none text-white hover:text-primary" key={category.slug}>
-      <Link className="text-white" key={category.slug} href={`/category/${category.slug}`}>{category.name}</Link>
+      <Link
+        className="text-white"
+        key={category.slug}
+        href={`/category/${category.slug}/?page=1`}
+      >
+        {category.name}
+      </Link>
     </li>
-  ))
+  ));
+
+  useEffect(() => {
+    console.log()
+  })
 
   return (
     <>
@@ -37,17 +72,6 @@ const NavLinks = () => {
       </nav>
       {/* <hr className="w-full md:hidden block " /> */}
     </>
-
-
-    // <>
-    //   <nav className="border-[3px] border-primary w-full lg:flex md:flex sm:hidden hidden ">
-    //     <Image src={rn} width={65} height={65} alt="RN Logo" className="border-r-[3px] p-2 border-primary cursor-pointer" />
-    //     <ul className="flex w-full justify-between py-2 lg:px-5 px-2 text-white">
-    //       {categoriesHTML}
-    //     </ul>
-    //   </nav>
-    //   <hr className="border-2 w-full border-primary md:hidden block " />
-    // </>
   )
 }
 
