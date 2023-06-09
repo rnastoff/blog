@@ -13,8 +13,6 @@ interface Com {
 
 
 const CommentGroup = ({ slug }: { slug: string }) => {
-  console.log("slug", slug);
-
   const [comments, setComments] = useState<Com[]>([]);
 
   useEffect(() => {
@@ -28,6 +26,7 @@ const CommentGroup = ({ slug }: { slug: string }) => {
       name={comment.name}
       createdAt={comment.createdAt}
       comment={comment.comment}
+      key={comment.createdAt}
     />
   ))
 
