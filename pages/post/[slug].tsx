@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 
+import Loader from '../../components/Loader';
 import PostContent from '../../components/PostContent';
 import CommentForm from '../../components/CommentForm';
 import CommentGroup from '../../components/CommentGroup';
@@ -9,6 +10,14 @@ import { PostSlug } from "../../interfaces/postSlug";
 import { getPost, getPreviewPosts } from "../../services/index";
 
 const Post = ({ post }: { post: PostSlug }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <Loader />
+    )
+  }
+
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="lg:mt-8 mt-4 lg:w-[35rem] md:w-[32rem] w-[20rem]">
@@ -33,13 +42,13 @@ export async function getStaticProps({ params }: { params: { "slug": string } })
   }
 }
 
-//need paths for slug
+//need paths for slug, fallback needs to be set to true, so posts aren't statically generated
 export async function getStaticPaths({ params }: { params: { "slug": string } }) {
   const posts = await getPreviewPosts();
   let paths = posts.map(({ node: { slug } }: any) => ({ params: { slug } }));
 
   return {
     paths: paths,
-    fallback: false
+    fallback: true
   }
 }

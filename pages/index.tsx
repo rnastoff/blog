@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 
+import Loader from '../components/Loader';
 import PostPreview from '../components/PostPreview';
 import Pagination from '../components/Pagination';
 
@@ -37,6 +38,7 @@ export default function Home({ posts }: PostPreviews) {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="postPreviews lg:w-[35rem] md:w-[32rem] w-[20rem] md:mt-8 mt-4 mb-32">
+        {/* <Loader /> */}
         {postPreviews}
         <Pagination
           hasNextButton={hasNextButton()}
