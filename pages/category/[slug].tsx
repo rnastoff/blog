@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+
+import Loader from '../../components/Loader';
 import PostPreview from '../../components/PostPreview';
 import Pagination from '../../components/Pagination';
 
@@ -9,7 +11,6 @@ import usePagination from '../../hooks/usePagination';
 
 const Category = ({ posts }: PostPreviews) => {
   const router = useRouter();
-  console.log("ROUTER INSIDE CATEGORY SLUG", router);
   const slug = router.query.slug;
   const pageNum = typeof router.query.page === 'string' ? parseInt(router.query.page) : 1;
 
@@ -30,6 +31,12 @@ const Category = ({ posts }: PostPreviews) => {
       />
     )
   })
+
+  if (router.isFallback) {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -66,6 +73,6 @@ export async function getStaticPaths() {
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   }
 }
