@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import rn from '../images/rn.svg';
 
 const categories = [
@@ -19,26 +18,9 @@ interface Props {
   handlePageChange: (page: number) => void
 }
 
-//{ handlePageChange }: Props
 
 const NavLinks = () => {
 
-  const router = useRouter();
-  console.log(router);
-
-  // const categoryClick = (e: React.MouseEvent<HTMLElement>) => {
-  //   e.preventDefault();
-
-  //   let page = 1;
-  //   if (router.query.page) {
-  //     if (!Array.isArray(router.query.page)) {
-  //       page = parseInt(router.query.page);
-  //     }
-  //   }
-  //   // handlePageChange(page);
-  // }
-
-  // onClick={categoryClick}
 
   const categoriesHTML = categories.map((category) => (
     <li className="self-center cursor-pointer list-none text-white hover:text-primary" key={category.slug}>

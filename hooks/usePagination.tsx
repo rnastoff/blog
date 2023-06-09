@@ -38,8 +38,6 @@ const usePagination = (allPosts: PostPrev[], slug: string | undefined | string[]
   }
 
   useEffect(() => {
-    // console.log("USEFFECT RUNNING ON LOAD");
-    console.log(pageNum);
     firstIndexCurrentPage = getFirstIndex();
     lastIndexCurrentPage = getLastIndex();
     const newPosts = allPosts.slice(firstIndexCurrentPage, lastIndexCurrentPage);
@@ -54,13 +52,6 @@ const usePagination = (allPosts: PostPrev[], slug: string | undefined | string[]
     setCurrentPagePosts(newPosts);
   }, [router.query.page, router.query.slug, router.pathname])
 
-  //LOGS
-  // useEffect(() => {
-  //   console.log("allPosts.length: ", allPosts.length);
-  //   console.log("firstIndexCurrentPage: ", firstIndexCurrentPage);
-  //   console.log("lastIndexCurrentPage: ", lastIndexCurrentPage);
-  //   console.log("TRUE OR FALSE FOR NEXT BUTTON: ", allPosts.length > lastIndexCurrentPage)
-  // });
 
   return { hasNextButton, hasPreviousButton, currentPagePosts };
 }

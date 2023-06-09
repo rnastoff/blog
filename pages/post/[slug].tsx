@@ -1,7 +1,8 @@
+import { useRouter } from 'next/router';
+
 import PostContent from '../../components/PostContent';
 import CommentForm from '../../components/CommentForm';
 import CommentGroup from '../../components/CommentGroup';
-
 
 import { PostSlug } from "../../interfaces/postSlug";
 
