@@ -62,7 +62,8 @@ export async function getStaticProps({ params }: { params: { "slug": string } })
   let data = await getCategoryPosts(params.slug);
   data = data.reverse();
   return {
-    props: { posts: data }
+    props: { posts: data },
+    revalidate: 10
   }
 }
 

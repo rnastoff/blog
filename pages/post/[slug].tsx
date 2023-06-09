@@ -39,6 +39,7 @@ export async function getStaticProps({ params }: { params: { "slug": string } })
   const data = await getPost(params.slug);
   return {
     props: { post: data },
+    revalidate: 10
   }
 }
 
