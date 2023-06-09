@@ -14,6 +14,12 @@ const Category = ({ posts }: PostPreviews) => {
   const slug = router.query.slug;
   const pageNum = typeof router.query.page === 'string' ? parseInt(router.query.page) : 1;
 
+  if (router.isFallback) {
+    return (
+      <Loader />
+    )
+  }
+
   const {
     hasNextButton,
     hasPreviousButton,
@@ -32,11 +38,7 @@ const Category = ({ posts }: PostPreviews) => {
     )
   })
 
-  if (router.isFallback) {
-    return (
-      <Loader />
-    )
-  }
+
 
   return (
     <div className="flex flex-col justify-center items-center">
