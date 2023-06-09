@@ -19,11 +19,11 @@ const Category = ({ posts }: PostPreviews) => {
     hasPreviousButton,
     currentPagePosts } = usePagination(posts, slug, pageNum);
 
-  if (router.isFallback) {
-    return (
-      <Loader />
-    )
-  }
+  // if (router.isFallback) {
+  //   return (
+  //     <Loader />
+  //   )
+  // }
 
   const categoryPostPreviews = currentPagePosts.map((post) => {
     return (
