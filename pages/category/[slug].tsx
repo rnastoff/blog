@@ -14,16 +14,16 @@ const Category = ({ posts }: PostPreviews) => {
   const slug = router.query.slug;
   const pageNum = typeof router.query.page === 'string' ? parseInt(router.query.page) : 1;
 
+  const {
+    hasNextButton,
+    hasPreviousButton,
+    currentPagePosts } = usePagination(posts, slug, pageNum);
+
   if (router.isFallback) {
     return (
       <Loader />
     )
   }
-
-  const {
-    hasNextButton,
-    hasPreviousButton,
-    currentPagePosts } = usePagination(posts, slug, pageNum);
 
   const categoryPostPreviews = currentPagePosts.map((post) => {
     return (
